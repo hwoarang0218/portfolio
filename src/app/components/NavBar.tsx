@@ -27,7 +27,7 @@ export const NavBar = () => {
   const isActiveLink = (href: string) => pathname === href;
 
   return (
-    <nav className="print:hidden fixed top-0 z-50 w-full border-b shadow-sm border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+    <nav className="print:hidden fixed top-0 z-50 w-full border-b shadow-sm border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link
