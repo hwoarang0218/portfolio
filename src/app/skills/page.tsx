@@ -1,5 +1,5 @@
 import React from "react";
-import SkillAccordion from "./SkillAccordion";
+import SkillAccordion from "./skillAccordion";
 import { skills_FE, skills_BE, skills_OTHERS } from "../../data";
 
 const SkillPage = () => {
