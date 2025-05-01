@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
@@ -71,7 +71,6 @@ const Projects = () => {
   const [selectedImage, setSelectedImage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     setIsLoading(true);
@@ -81,7 +80,7 @@ const Projects = () => {
     }, 500); // Simulate loading delay
 
     return () => clearTimeout(timeout);
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   const ProjectGrid = ({ projects }: { projects: typeof personalProjects }) => {
     const router = useRouter();
