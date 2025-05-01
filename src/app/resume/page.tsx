@@ -409,8 +409,7 @@ const Resume = () => {
   const [socialLinks] = useState({
     linkedin: "https://linkedin.com/in/marklester0218",
     github: "https://github.com/hwoarang0218",
-    portfolio: "https://portfolio-beryl-theta-76.vercel.app/",
-    // portfolio: "https://resume-hwoarang0218s-projects.vercel.app/",
+    portfolio: "https://portfolio-hwoarang0218s-projects.vercel.app/",
   });
 
   const [showReferences, setShowReferences] = useState(false);
@@ -777,8 +776,8 @@ const Resume = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 print:bg-white print:py-0">
-      <div className="max-w-[850px] mx-auto bg-white shadow-md p-8 print:shadow-none print:p-6">
+    <div className="min-h-screen bg-gray-100 py-8 print:bg-white print:py-1">
+      <div className="max-w-[850px] mx-auto bg-white shadow-md p-8 print:shadow-none print:p-1">
         <div className="action-buttons print:hidden fixed left-4 top-1/4 flex flex-col gap-4">
           <button
             onClick={handlePrint}
