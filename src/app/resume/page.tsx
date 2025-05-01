@@ -409,7 +409,8 @@ const Resume = () => {
   const [socialLinks] = useState({
     linkedin: "https://linkedin.com/in/marklester0218",
     github: "https://github.com/hwoarang0218",
-    portfolio: "https://resume-hwoarang0218s-projects.vercel.app/",
+    portfolio: "https://portfolio-beryl-theta-76.vercel.app/",
+    // portfolio: "https://resume-hwoarang0218s-projects.vercel.app/",
   });
 
   const [showReferences, setShowReferences] = useState(false);

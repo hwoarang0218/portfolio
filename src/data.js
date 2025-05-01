@@ -105,8 +105,8 @@ export const skills_BE = [
     ],
   },
   {
-    skill: "Docker",
-    img: "https://www.vectorlogo.zone/logos/docker/docker-icon.svg",
+    skill: "REST API",
+    img: "https://www.vectorlogo.zone/logos/docker/api-icon.svg",
     content: [
       { label: "Years of Experience", value: "5+" },
       { label: "Applied in Projects", value: "Yes" },
