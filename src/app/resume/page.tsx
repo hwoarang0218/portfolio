@@ -16,10 +16,13 @@ const Resume = () => {
     {
       title: "Lead Front-End Developer",
       company: "ATOS (Syntel InfoTech Inc.)",
-      period: "April 22 2022 – Sept 23 2023",
+      period: "April 2022 – Sept 2023",
       achievements: [
-        "Individual contributor as senior front-end developer develops according to functional and technical design specifications.",
-        "Delegates tasks to peer developers based on complexity and priority as part of my lead role.",
+        "Collaborated with a multinational team from India and UK to deliver a new software solution for a client in South Africa.",
+        "Led the Manila development team in a cross-functional role to align with technical design requirements.",
+        "Delegate tasks to peer developers based on their complexity and priority as part of my leadership role.",
+        "Mentored junior developers, providing guidance on best practices for clean and efficient code writing.",
+        "Accelerated project completion timelines through effective task prioritization and agile methodologies adoption.",
         "Multiple commendations received from both client and company side.",
         "MVP awardee",
       ],
@@ -40,12 +43,14 @@ const Resume = () => {
     {
       title: "PHP Developer (Mid – Senior level)",
       company: "BCS Technology International PTY LTD - Philippines ROHQ",
-      period: "April 15 2019 – October 2020",
+      period: "April 2019 – October 2020",
       achievements: [
+        "Collaborated with an overseas team in Australia to maintain and update a legacy web and mobile application for an Australian healthcare client.",
         "Debug and optimization of codes. Make sure all features are working and bug free at all times.",
         "Develop software according to functional and technical design specifications.",
-        "Developed APIs to work compatibly on mobile platforms as well as Web version of the app.",
-        "Assist in the continual improvement of software configuration management process.",
+        "Developed APIs to function seamlessly on both mobile platforms and the web version of the app.",
+        "Configured and deployed existing and future REST APIs, integrating with third-party APIs.",
+        "Refactored legacy code for improved readability, maintainability, and performance optimizations.",
       ],
       technologies: [
         "PHP",
@@ -63,11 +68,12 @@ const Resume = () => {
     {
       title: "Senior Web Developer",
       company: "ACCENT MICRO TECHNOLOGIES INC. (AMTI)",
-      period: "July 17 2017 – March 2019",
+      period: "July 2017 – March 2019",
       achievements: [
-        "Automate and coverts several day-to-day business process of the company to Web Application.",
-        "Leads R&D team with Digital Transformation adaptation of the company.",
-        "Developed internal learning software skill thru web to boost employee performance.",
+        "Automate and convert several day-to-day business processes of the company into a web application.",
+        "Led the R&D team in the company's digital transformation initiatives.",
+        "Innovated new approaches for front-end performance optimization using advanced browser APIs and progressive web app technologies.",
+        "Developed internal learning software skills through the web to enhance employee performance.",
         "Developed logistics software to track and monitor the company’s assets.",
       ],
       technologies: [
@@ -91,14 +97,14 @@ const Resume = () => {
       ],
     },
     {
-      title: "Senior Web Developer",
+      title: "Software Engineer",
       company: "CHANNEL SOLUTIONS INC.(CSI)",
       period: "February 2012 – June 2017",
       achievements: [
-        "Involved in maintenance and enhancement on our client’s flagship software for their renown service.",
+        "Involved in maintenance and enhancement on our client’s flagship software for their renowned service.",
         "Conducted various types of ad hoc testing to catch any unexpected issues that may arise during normal usage.",
         "Integrate several custom ATM's and POS Transaction of template reports as required of Banks.",
-        "Started my career in Web Development which progress my skills equip with up to date frameworks, tools, and technologies.",
+        "I started my career in web development, which helped me enhance my skills and become proficient with up-to-date frameworks, tools, and technologies.",
       ],
       technologies: [
         "Visual Basic 6",
@@ -120,7 +126,8 @@ const Resume = () => {
 
   const [personalInfo, setPersonalInfo] = useState({
     name: "Mark Lester De Guzman",
-    title: "Front-End Developer",
+    // title: "Front-End Developer (React JS)",
+    title: "Full Stack Developer (React JS)",
     email: "marklester0218@gmail.com",
     phone: "09760763032",
     location: "Bacoor Cavite, Philippines",
@@ -361,6 +368,12 @@ const Resume = () => {
         rating: 3,
         color: "bg-[rgb(255,108,55)] opacity-100 hover:text-white",
       },
+      {
+        name: "Claude AI",
+        years: 1,
+        rating: 3,
+        color: "bg-[rgb(255,108,55)] opacity-100 hover:text-white",
+      },
     ],
   });
 
@@ -384,10 +397,29 @@ const Resume = () => {
   } | null>(null);
 
   const [summary, setSummary] = useState([
-    "Experienced Developer focusing on the client-side of web applications with a strong background in Finance, Healthcare, Logistics, Retail industry.",
-    "Able to adopt fast to different working environment.",
-    "Experienced lead who proactively offer solutions to challenges faced by the team.",
+    "A full-stack developer specializing in front-end, with experience in back-end processes, including API query integration.",
+    "Experienced lead who proactively offers solutions to challenges faced by the team",
+    "Experienced developer with a strong background in the finance, healthcare, logistics, and retail industries.",
+    "Able to adapt quickly to different work systems and methodologies.",
   ]);
+
+  // Font size state
+  const [fontSize, setFontSize] = useState(12);
+  const minFontSize = 12;
+  const maxFontSize = 24;
+
+  // Compute skill badge font size and icon size based on fontSize
+  const skillBadgeFontSize = fontSize * 0.9;
+  const skillIconSize = Math.round(fontSize * 1.2); // Increased icon size
+
+  // Track which skill icons failed to load
+  const [missingSkillIcons, setMissingSkillIcons] = useState<{
+    [key: string]: boolean;
+  }>({});
+
+  const handleSkillIconError = (skillName: string) => {
+    setMissingSkillIcons((prev) => ({ ...prev, [skillName]: true }));
+  };
 
   const [references] = useState([
     {
@@ -579,16 +611,18 @@ const Resume = () => {
                 key={skill.name}
                 onClick={() => handleSkillEdit(skill, "frontend")}
                 title={`Experience: ${skill.years} years, Rating: ${skill.rating}/5`}
-                className={`group relative px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm transition-colors duration-200 cursor-pointer flex items-center gap-2`}
+                className={`group relative px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-sm transition-colors duration-200 cursor-pointer flex items-center gap-2`}
+                style={{ fontSize: `${skillBadgeFontSize}px` }}
               >
-                <img
-                  src={getSkillLogo(skill.name)}
-                  alt={`${skill.name} logo`}
-                  className="w-4 h-4"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
-                />
+                {/* Only render icon if not missing */}
+                {!missingSkillIcons[skill.name] ? (
+                  <img
+                    src={getSkillLogo(skill.name)}
+                    alt={`${skill.name} logo`}
+                    style={{ width: skillIconSize, height: skillIconSize }}
+                    onError={() => handleSkillIconError(skill.name)}
+                  />
+                ) : null}
                 {skill.name}
                 <span className="absolute left-1/2 -translate-x-1/2 -top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 whitespace-nowrap">
                   Experience: {skill.years} years, Rating: {skill.rating}/5
@@ -608,15 +642,16 @@ const Resume = () => {
                 onClick={() => handleSkillEdit(skill, "backend")}
                 title={`Experience: ${skill.years} years, Rating: ${skill.rating}/5`}
                 className={`group relative px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm transition-colors duration-200  cursor-pointer flex items-center gap-2`}
+                style={{ fontSize: `${skillBadgeFontSize}px` }}
               >
-                <img
-                  src={getSkillLogo(skill.name)}
-                  alt={`${skill.name} logo`}
-                  className="w-4 h-4"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
-                />
+                {!missingSkillIcons[skill.name] ? (
+                  <img
+                    src={getSkillLogo(skill.name)}
+                    alt={`${skill.name} logo`}
+                    style={{ width: skillIconSize, height: skillIconSize }}
+                    onError={() => handleSkillIconError(skill.name)}
+                  />
+                ) : null}
                 {skill.name}
                 <span className="absolute left-1/2 -translate-x-1/2 -top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 whitespace-nowrap">
                   Experience: {skill.years} years, Rating: {skill.rating}/5
@@ -638,15 +673,16 @@ const Resume = () => {
                 onClick={() => handleSkillEdit(skill, "devops")}
                 title={`Experience: ${skill.years} years, Rating: ${skill.rating}/5`}
                 className={`group relative px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm transition-colors duration-200  cursor-pointer flex items-center gap-2`}
+                style={{ fontSize: `${skillBadgeFontSize}px` }}
               >
-                <img
-                  src={getSkillLogo(skill.name)}
-                  alt={`${skill.name} logo`}
-                  className="w-4 h-4"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
-                />
+                {!missingSkillIcons[skill.name] ? (
+                  <img
+                    src={getSkillLogo(skill.name)}
+                    alt={`${skill.name} logo`}
+                    style={{ width: skillIconSize, height: skillIconSize }}
+                    onError={() => handleSkillIconError(skill.name)}
+                  />
+                ) : null}
                 {skill.name}
                 <span className="absolute left-1/2 -translate-x-1/2 -top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100 whitespace-nowrap">
                   Experience: {skill.years} years, Rating: {skill.rating}/5
@@ -656,7 +692,6 @@ const Resume = () => {
           </div>
         </div>
       </div>
-
       {isSkillModalOpen && editingSkill && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center print:hidden">
           <div className="bg-white p-6 rounded-lg w-full max-w-md">
@@ -777,7 +812,30 @@ const Resume = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 py-8 print:bg-white print:py-1">
-      <div className="max-w-[850px] mx-auto bg-white shadow-md p-8 print:shadow-none print:p-1">
+      {/* Floating font size changer */}
+      <div className="fixed right-4 top-1/4 z-50 flex flex-col items-center gap-2 print:hidden">
+        <button
+          onClick={() => setFontSize((f) => Math.min(f + 2, maxFontSize))}
+          className="bg-gray-300 hover:bg-gray-400 text-lg rounded-full w-8 h-8 flex items-center justify-center font-bold"
+          title="Increase font size"
+        >
+          +
+        </button>
+        <span className="bg-white border px-2 py-1 rounded text-xs">
+          {fontSize}px
+        </span>
+        <button
+          onClick={() => setFontSize((f) => Math.max(f - 2, minFontSize))}
+          className="bg-gray-300 hover:bg-gray-400 text-lg rounded-full w-8 h-8 flex items-center justify-center font-bold"
+          title="Decrease font size"
+        >
+          –
+        </button>
+      </div>
+      <div
+        className="max-w-[850px] mx-auto bg-white shadow-md p-8 print:shadow-none print:p-1"
+        style={{ fontSize: `${fontSize}px` }}
+      >
         <div className="action-buttons print:hidden fixed left-4 top-1/4 flex flex-col gap-4">
           <button
             onClick={handlePrint}
@@ -816,13 +874,13 @@ const Resume = () => {
         <div className="space-y-3 ">
           <header className="text-center">
             <h1 className="text-3xl font-bold">{personalInfo.name}</h1>
-            <h2 className="text-2xl font-bold text-gray-600">
+            <h2 className="text-xl font-bold text-gray-600">
               {personalInfo.title}
             </h2>
             <div className="mt-2  text-gray-600">
               <p>
                 <span className="inline-flex items-center pr-2 ">
-                  <FaPhone className="mr-1 " />
+                  <FaPhone className="mr-1 rotate-90" />
                   {personalInfo.phone}
                 </span>
 
@@ -840,11 +898,13 @@ const Resume = () => {
 
           <section>
             <h2 className="text-xl font-semibold border-b-2 mb-3">Summary</h2>
-            <div className="text-gray-700 leading-relaxed space-y-2">
-              {summary.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+            <ul className="text-gray-700 leading-relaxed space-y-2 list-disc pl-5">
+              {summary.map((item, index) => (
+                <li key={index} className="pl-1">
+                  <span className="block">{item}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
           {skillsSection}
@@ -874,12 +934,18 @@ const Resume = () => {
                   <p className="text-gray-600">
                     {exp.company} • {exp.period}
                   </p>
-                  <ul className="list-disc list-inside mt-2">
+                  {/* Achievements as aligned bulleted list */}
+                  <ul className="list-disc pl-5 mt-2 text-gray-700 space-y-1">
                     {exp.achievements.map((achievement, i) => (
-                      <li key={i}>{achievement}</li>
+                      <li key={i} className="pl-1">
+                        <span className="block">{achievement}</span>
+                      </li>
                     ))}
                   </ul>
-                  <div className="flex flex-wrap gap-2 mt-4">
+                  <h3 className="mt-2 mb-0 italic text-gray-700">
+                    Technologies Used
+                  </h3>
+                  <div className="flex flex-wrap gap-2 mt-1">
                     {exp.technologies?.map((tech, i) => {
                       const skillInfo = [
                         ...skills.frontend,
@@ -891,15 +957,15 @@ const Resume = () => {
                           className={`px-2 py-1 text-xs rounded-full bg-gray-200  "hover:bg-gray-300"
                           } flex items-center gap-1`}
                         >
-                          <img
-                            src={getSkillLogo(tech)}
-                            alt={`${tech} logo`}
-                            className="w-4 h-4"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).style.display =
-                                "none";
-                            }}
-                          />
+                          {/* Only render icon if not missing */}
+                          {!missingSkillIcons[tech] ? (
+                            <img
+                              src={getSkillLogo(tech)}
+                              alt={`${tech} logo`}
+                              className="w-4 h-4"
+                              onError={() => handleSkillIconError(tech)}
+                            />
+                          ) : null}
                           {tech}
                         </span>
                       );
@@ -926,7 +992,7 @@ const Resume = () => {
             </h2>
             <div className="grid grid-cols-3 gap-6 relative">
               <div className="text-center">
-                <div className="flex justify-center mb-2">
+                <div className="flex justify-center">
                   <div
                     style={{
                       height: "auto",
