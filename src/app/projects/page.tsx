@@ -101,7 +101,7 @@ const Projects = () => {
     };
 
     return (
-      <div className="grid grid-cols-2 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
         {projects.map((item, index) => (
           <section
             key={index}
@@ -120,7 +120,7 @@ const Projects = () => {
               <h2 className="text-base md:text-lg font-semibold mt-4">
                 {item.name}
               </h2>
-              <p className="text-sm md:text-md my-2 md:my-3 text-gray-600">
+              <p className="text-sm md:text-base my-2 md:my-3 text-gray-600">
                 {item.desc}
               </p>
               <div className="mt-auto flex flex-wrap gap-1.5 md:gap-2">
@@ -160,7 +160,7 @@ const Projects = () => {
           web development.
         </p>
 
-        <div className="flex flex-row gap-8 mt-8">
+        <div className="flex flex-col md:flex-row gap-8 mt-8">
           <div className="flex-1">
             <h2 className="text-xl md:text-2xl font-semibold mb-2">
               Professional Projects

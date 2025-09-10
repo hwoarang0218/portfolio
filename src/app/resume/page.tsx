@@ -19,7 +19,8 @@ const Resume = () => {
       period: "April 2022 – Sept 2023",
       achievements: [
         "Collaborated with a multinational team from India and UK to deliver a new software solution for a client in South Africa.",
-        "Led the Manila development team in a cross-functional role to align with technical design requirements.",
+        "Led the Manila development team in a cross-functional role to create efficient solutions aligned with both functional and technical designs.",
+        "Led the development team in creating a consistent design system by developing reusable components and style guides.",
         "Delegate tasks to peer developers based on their complexity and priority as part of my leadership role.",
         "Mentored junior developers, providing guidance on best practices for clean and efficient code writing.",
         "Accelerated project completion timelines through effective task prioritization and agile methodologies adoption.",
@@ -397,8 +398,8 @@ const Resume = () => {
   } | null>(null);
 
   const [summary, setSummary] = useState([
-    "A full-stack developer specializing in front-end, with experience in back-end processes, including API query integration.",
     "Experienced lead who proactively offers solutions to challenges faced by the team",
+    "A full-stack developer specializing in front-end development, with experience in back-end processes, including API query integration.",
     "Experienced developer with a strong background in the finance, healthcare, logistics, and retail industries.",
     "Able to adapt quickly to different work systems and methodologies.",
   ]);
@@ -410,7 +411,7 @@ const Resume = () => {
 
   // Compute skill badge font size and icon size based on fontSize
   const skillBadgeFontSize = fontSize * 0.9;
-  const skillIconSize = Math.round(fontSize * 1.2); // Increased icon size
+  const skillIconSize = Math.round(fontSize * 0.9); // Increased icon size
 
   // Track which skill icons failed to load
   const [missingSkillIcons, setMissingSkillIcons] = useState<{
@@ -611,7 +612,7 @@ const Resume = () => {
                 key={skill.name}
                 onClick={() => handleSkillEdit(skill, "frontend")}
                 title={`Experience: ${skill.years} years, Rating: ${skill.rating}/5`}
-                className={`group relative px-2 py-1 bg-gray-200 text-gray-700 rounded-full text-sm transition-colors duration-200 cursor-pointer flex items-center gap-2`}
+                className={`group relative px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm transition-colors duration-200 cursor-pointer flex items-center gap-2`}
                 style={{ fontSize: `${skillBadgeFontSize}px` }}
               >
                 {/* Only render icon if not missing */}
@@ -942,10 +943,7 @@ const Resume = () => {
                       </li>
                     ))}
                   </ul>
-                  <h3 className="mt-2 mb-0 italic text-gray-700">
-                    Technologies Used
-                  </h3>
-                  <div className="flex flex-wrap gap-2 mt-1">
+                  <div className="flex flex-wrap gap-2 mt-4">
                     {exp.technologies?.map((tech, i) => {
                       const skillInfo = [
                         ...skills.frontend,
@@ -992,7 +990,7 @@ const Resume = () => {
             </h2>
             <div className="grid grid-cols-3 gap-6 relative">
               <div className="text-center">
-                <div className="flex justify-center">
+                <div className="flex justify-center mb-2">
                   <div
                     style={{
                       height: "auto",
