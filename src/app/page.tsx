@@ -13,7 +13,7 @@ import * as THREE from "three";
 import LandingPage from "./landing";
 
 function Avatar() {
-  const { scene, animations } = useGLTF("/models/mac_vest.glb");
+  const { scene, animations } = useGLTF("/models/mld_casual_brown_jacket.glb");
 
   const { actions } = useAnimations(animations, scene);
 
@@ -55,13 +55,13 @@ function Avatar() {
 
   useEffect(() => {
     // Play the idle animation by default
-    actions["idle"]?.play();
+    actions["IdleV4.2(maya_head)"]?.play();
   }, [actions]);
 
   // This hook runs on every frame and allows us to update the scene
   useFrame((state) => {
     const { pointer } = state;
-    const idleAction = actions["idle"];
+    const idleAction = actions["IdleV4.2(maya_head)"];
 
     // Check if the mouse has moved
     if (pointer.distanceTo(lastPointer.current) > 0.001) {
@@ -154,12 +154,27 @@ export default function Home() {
       <div className="w-full md:w-1/2 h-1/2 md:h-full">
         <Canvas shadows camera={{ position: [0, 0, 3.5], fov: 45 }}>
           <ambientLight intensity={0.5} />
-          <directionalLight position={[3, 3, 5]} intensity={1.5} castShadow />
-          <pointLight position={[-3, 2, -2]} intensity={0.8} />
+          <directionalLight
+            position={[-3, 3, 5]}
+            intensity={0.9}
+            castShadow
+            shadow-mapSize-width={1024}
+            shadow-mapSize-height={1024}
+          />
+          <pointLight position={[-3, 2, -2]} intensity={0.5} />
           <Suspense fallback={null}>
             <Environment preset="city" />
             <Avatar />
           </Suspense>
+          {/* Ground plane to receive shadows */}
+          <mesh
+            rotation={[-Math.PI / 2, 0, 0]}
+            position={[0, -1.3, 0]}
+            receiveShadow
+          >
+            <planeGeometry args={[10, 10]} />
+            <shadowMaterial opacity={0.3} />
+          </mesh>
           <OrbitControls
             enableZoom={false}
             maxPolarAngle={Math.PI / 2}

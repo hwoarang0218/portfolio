@@ -130,8 +130,11 @@ const Resume = () => {
     // title: "Front-End Developer (React JS)",
     title: "Full Stack Developer (React JS)",
     email: "marklester0218@gmail.com",
-    phone: "09760763032",
-    location: "Bacoor Cavite, Philippines",
+    // phone: "09760763032",
+    phone: "0976-XXX-3032",
+    // email: "marklester0218@gmail.com",
+    // location: "Bacoor Cavite, Philippines",
+    location: "Metro Manila (NCR), Philippines",
     linkedin: "https://www.linkedin.com/in/marklester0218",
   });
 
